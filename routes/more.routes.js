@@ -32,8 +32,10 @@ router.post('/upload',  authMiddleware ,upload.single('file'), async (req,res) =
         originalName:req.file.originalname,
         user:req.user.userId
     })
+    console.log('Saved file:', newFile);
     res.redirect('/homepage');
 })
+
 router.get('/download/:id', authMiddleware, async (req,res)=>{
     const loggedInUserId=req.user.userId
    
