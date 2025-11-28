@@ -5,6 +5,15 @@ const router = express.Router();
 const { cloudinary, upload } = require('../config/cloudinary.config');
 const path= require('path')
 const fileModel = require('../models/file.model')
+router.get('/', (req, res) => {
+  if (req.user) {
+    // If user is authenticated, go to homepage
+    return res.redirect('/homepage');
+  }
+  // Otherwise, render login view
+  res.render('login'); 
+});
+
 
 router.get('/homepage' , authMiddleware, async (req,res) =>{
     const userFiles = await fileModel.find({
