@@ -67,12 +67,16 @@
 </div>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   <script>
-    function showpopUp() {
-      document.querySelector('.pop').style.display = 'flex';
-    }
-    function hidePop() {
-      document.querySelector('.pop').style.display = 'none';
-    }
+  
+  function showpopUp() {
+    document.querySelector('.pop').classList.remove('hidden');
+  }
+  function hidePop() {
+    document.querySelector('.pop').classList.add('hidden');
+  }
+
+
+   
   </script>
 </body>
 </html>
