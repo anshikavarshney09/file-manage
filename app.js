@@ -12,21 +12,26 @@ const moreRouter = require('./routes/more.routes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
+// Connect to database
 connectToDB();
 
-
-app.set('view engine', 'ejs');
+// Middleware
+app.use(express.static('public')); // serve CSS, JS, fonts, images
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors());
 
+// View engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+// Routes
 app.use('/', moreRouter);
 app.use('/user', userRoutes);
 
-
+// Start server
 app.listen(PORT, () => {
-    console.log(`✅ Server is running on port ${PORT}`);
+  console.log(`✅ Server is running on port ${PORT}`);
 });

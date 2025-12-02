@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build:css": "postcss ./src/input.css -o ./public/css/styles.css --config ./config/postcss.js",
+    "dev:css": "postcss ./src/input.css -o ./public/css/styles.css --config ./config/postcss.js --watch"
   },
   "keywords": [],
   "author": "",
@@ -13,18 +15,25 @@
   "type": "commonjs",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cloudinary": "^2.8.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-validator": "^7.3.0",
+    "flowbite": "^4.0.1",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.19.3",
     "multer": "^2.0.2",
-    "cloudinary": "1.41.0",
-"multer-storage-cloudinary": "4.0.0"
-
+    "multer-storage-cloudinary": "^4.0.0",
+    "remixicon": "^4.7.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.17"
   }
 }
