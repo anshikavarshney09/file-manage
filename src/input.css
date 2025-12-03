@@ -1,1 +1,15 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: include Flowbite plugin styles */
+@import "flowbite";
+
+/* Optional: include Remixicon CSS */
+@import "remixicon/fonts/remixicon.css";
+
+/* Custom styles (your overrides) */
+body {
+  font-family: 'Inter', sans-serif;
+}
+
