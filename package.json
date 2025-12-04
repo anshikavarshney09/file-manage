@@ -7,8 +7,7 @@
     
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "build:css": "postcss ./src/input.css -o ./public/css/styles.css --config ./config/postcss.js",
-    "dev:css": "postcss ./src/input.css -o ./public/css/styles.css --config ./config/postcss.js --watch"
+  
   },
   "keywords": [],
   "author": "",
@@ -32,9 +31,6 @@
     "remixicon": "^4.7.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.22",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
-    "tailwindcss": "^4.1.17"
+   
   }
 }
