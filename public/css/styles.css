@@ -2,16 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: include Flowbite plugin styles */
+/* Flowbite */
 @import "flowbite";
 
-/* Optional: include Remixicon CSS */
+/* Remixicon */
 @import "remixicon/fonts/remixicon.css";
 
-/* Custom styles (your overrides) */
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnB1dC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoic3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkB0YWlsd2luZCBiYXNlO1xyXG5AdGFpbHdpbmQgY29tcG9uZW50cztcclxuQHRhaWx3aW5kIHV0aWxpdGllcztcclxuXHJcbi8qIE9wdGlvbmFsOiBpbmNsdWRlIEZsb3diaXRlIHBsdWdpbiBzdHlsZXMgKi9cclxuQGltcG9ydCBcImZsb3diaXRlXCI7XHJcblxyXG4vKiBPcHRpb25hbDogaW5jbHVkZSBSZW1peGljb24gQ1NTICovXHJcbkBpbXBvcnQgXCJyZW1peGljb24vZm9udHMvcmVtaXhpY29uLmNzc1wiO1xyXG5cclxuLyogQ3VzdG9tIHN0eWxlcyAoeW91ciBvdmVycmlkZXMpICovXHJcbmJvZHkge1xyXG4gIGZvbnQtZmFtaWx5OiAnSW50ZXInLCBzYW5zLXNlcmlmO1xyXG59XHJcblxyXG4iXX0= */
+
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9pbnB1dC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEiLCJmaWxlIjoic3R5bGVzLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkB0YWlsd2luZCBiYXNlO1xyXG5AdGFpbHdpbmQgY29tcG9uZW50cztcclxuQHRhaWx3aW5kIHV0aWxpdGllcztcclxuXHJcbi8qIEZsb3diaXRlICovXHJcbkBpbXBvcnQgXCJmbG93Yml0ZVwiO1xyXG5cclxuLyogUmVtaXhpY29uICovXHJcbkBpbXBvcnQgXCJyZW1peGljb24vZm9udHMvcmVtaXhpY29uLmNzc1wiO1xyXG5cclxuYm9keSB7XHJcbiAgZm9udC1mYW1pbHk6IFwiSW50ZXJcIiwgc2Fucy1zZXJpZjtcclxufVxyXG5cclxuXHJcblxyXG4iXX0= */

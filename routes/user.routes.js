@@ -78,7 +78,12 @@ router.post('/login',
             username : user.username
          }, process.env.JWT_SECRET
         )
-         res.cookie('token' , token)
+        res.cookie('token', token, {
+    httpOnly: true,
+    secure: false,     // 🔥 LOCALHOST ke liye IMPORTANT
+    sameSite: "lax",   // strict mat rakhna
+});
+
 
          res.redirect('/homepage');
 
