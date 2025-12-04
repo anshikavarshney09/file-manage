@@ -4,74 +4,113 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Tailwind via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS -->
+  <link href="/css/styles.css" rel="stylesheet">
 
-  <!-- Remixicon via CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+  <!-- Remixicon Icons -->
+  <link href="/css/remixicon.css" rel="stylesheet">
 
-  <!-- Flowbite JS via CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js" defer></script>
+  <!-- Flowbite -->
+  <script src="/js/flowbite.js" defer></script>
 
-  <title>File Upload Portal</title>
+  <title>Drive – Your Files</title>
 </head>
 
-<body class="min-h-screen bg-gray-100 dark:bg-gray-800 px-4 sm:px-6 lg:px-8">
-  <div class="w-full max-w-4xl mx-auto mt-10 bg-white dark:bg-gray-700 shadow-md rounded-lg p-6">
-    <main class="p-6 max-w-4xl mx-auto">
-      <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold">Welcome, <%= user.username %> 👋</h1>
-        <div class="flex gap-3">
-          <button id="uploadBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow transition">
-            <i class="ri-upload-2-line mr-2"></i> Upload File
-          </button>
-          <a href="/user/logout" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded shadow transition">
-            <i class="ri-logout-box-line mr-2"></i> Logout
+<body class="min-h-screen bg-gray-100 dark:bg-gray-900">
+
+  <!-- TOP NAVBAR -->
+  <nav class="w-full bg-white dark:bg-gray-800 shadow-md py-4 px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      Welcome, <%= user.username %> 👋
+    </h1>
+
+    <div class="flex gap-3">
+      <button id="uploadBtn"
+              class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow">
+        <i class="ri-upload-2-line text-lg"></i> Upload File
+      </button>
+
+      <a href="/user/logout"
+         class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-all shadow">
+        <i class="ri-logout-box-line text-lg"></i> Logout
+      </a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT WRAPPER -->
+  <div class="max-w-4xl mx-auto mt-10">
+
+    <!-- Uploaded Files Section -->
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">Your Files</h2>
+
+    <div class="flex flex-col gap-4">
+      <% if (files.length === 0) { %>
+        <div class="text-gray-500 dark:text-gray-400 text-center py-10">
+          No files uploaded yet 😔  
+          <br>Click the <strong>Upload File</strong> button to get started.
+        </div>
+      <% } %>
+
+      <% files.forEach((file) => { %>
+        <div
+          class="bg-white dark:bg-gray-800 px-5 py-4 rounded-xl shadow flex justify-between items-center hover:shadow-lg transition-all">
+
+          <div class="flex items-center gap-3">
+            <i class="ri-file-line text-2xl text-gray-600 dark:text-gray-300"></i>
+            <p class="font-medium text-gray-800 dark:text-gray-100 max-w-xs truncate">
+              <%= file.originalName %>
+            </p>
+          </div>
+
+          <a href="/download/<%= file._id %>"
+             class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition"
+             download="<%= file.originalName %>" target="_blank">
+            <i class="ri-download-2-line text-2xl"></i>
           </a>
         </div>
-      </div>
+      <% }) %>
+    </div>
 
-      <!-- Upload Popup -->
-      <div id="popup" class="backdrop-blur-sm bg-black/30 hidden fixed top-0 left-0 h-screen w-screen flex items-center justify-center z-50">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 relative w-full max-w-lg mx-4 sm:mx-0">
-          <button id="closeBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 text-xl">
-            <i class="ri-close-large-fill"></i>
-          </button>
-          <form action="/upload" method="post" enctype="multipart/form-data">
-            <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition">
-              <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 20 16">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                </svg>
-                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-              </div>
-              <input id="dropzone-file" type="file" class="hidden" name="file" />
-            </label>
-            <div class="mt-4 text-right">
-              <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition">
-                <i class="ri-send-plane-2-line mr-2"></i> Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- Uploaded Files -->
-      <div class="files flex flex-col gap-4 mt-6">
-        <% files.forEach((file) => { %>
-          <div class="p-4 rounded-md bg-white dark:bg-gray-700 shadow flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-600 transition cursor-pointer">
-            <h2 class="font-medium truncate max-w-xs"><%= file.originalName %></h2>
-            <a href="/download/<%= file._id %>" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300" download="<%= file.originalName %>" target="_blank">
-              <i class="ri-arrow-down-fill text-xl"></i>
-            </a>
-          </div>
-        <% }) %>
-      </div>
-    </main>
   </div>
 
+  <!-- UPLOAD POPUP -->
+  <div id="popup"
+       class="hidden fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50">
+
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl w-full max-w-lg relative">
+
+      <button id="closeBtn"
+              class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-2xl">
+        <i class="ri-close-line"></i>
+      </button>
+
+      <form action="/upload" method="post" enctype="multipart/form-data">
+
+        <label for="dropzone-file"
+               class="flex flex-col items-center justify-center w-full h-52 border-2 border-dashed rounded-xl border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition cursor-pointer">
+
+          <i class="ri-cloud-upload-line text-4xl text-gray-500 dark:text-gray-300 mb-3"></i>
+
+          <p class="text-gray-500 dark:text-gray-300">
+            <span class="font-medium">Click to upload</span> or drag and drop
+          </p>
+
+          <p class="text-xs text-gray-400 dark:text-gray-400">Supports: JPG, PNG, GIF, PDF</p>
+
+          <input id="dropzone-file" type="file" name="file" class="hidden" />
+
+        </label>
+
+        <button type="submit"
+                class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-all">
+          Upload Now
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const popup = document.getElementById("popup");
@@ -87,5 +126,6 @@
       });
     });
   </script>
+
 </body>
 </html>
