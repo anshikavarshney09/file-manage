@@ -21,7 +21,8 @@
     </div>
 
     <div class="nav-actions">
-      <button id="uploadBtn" class="btn btn-primary">
+      <!-- Upload button: direct onclick -->
+      <button type="button" class="btn btn-primary" onclick="openPopup()">
         <i class="ri-upload-2-line"></i>
         <span>Upload File</span>
       </button>
@@ -64,7 +65,8 @@
   <!-- UPLOAD POPUP -->
   <div id="popup" class="backdrop hidden">
     <div class="popup">
-      <button id="closeBtn" class="close-btn">
+      <!-- close button -->
+      <button type="button" class="close-btn" onclick="closePopup()">
         <i class="ri-close-line"></i>
       </button>
 
@@ -88,34 +90,30 @@
     </div>
   </div>
 
-  <!-- JS for popup -->
+  <!-- SUPER SIMPLE JS -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const popup = document.getElementById("popup");
-      const uploadBtn = document.getElementById("uploadBtn");
-      const closeBtn = document.getElementById("closeBtn");
-
-      if (uploadBtn && popup) {
-        uploadBtn.addEventListener("click", () => {
-          popup.classList.remove("hidden");
-        });
-      }
-
-      if (closeBtn && popup) {
-        closeBtn.addEventListener("click", () => {
-          popup.classList.add("hidden");
-        });
-      }
-
+    function openPopup() {
+      var popup = document.getElementById("popup");
       if (popup) {
-        popup.addEventListener("click", (e) => {
-          // backdrop pe click kiya to band ho jaaye
-          if (e.target === popup) {
-            popup.classList.add("hidden");
-          }
-        });
+        popup.classList.remove("hidden");
+      }
+    }
+
+    function closePopup() {
+      var popup = document.getElementById("popup");
+      if (popup) {
+        popup.classList.add("hidden");
+      }
+    }
+
+    // backdrop pe click kare to bhi band ho
+    window.addEventListener("click", function (e) {
+      var popup = document.getElementById("popup");
+      if (popup && e.target === popup) {
+        closePopup();
       }
     });
   </script>
 </body>
 </html>
+
