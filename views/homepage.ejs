@@ -21,8 +21,8 @@
     </div>
 
     <div class="nav-actions">
-      <!-- Upload button: direct onclick -->
-      <button type="button" class="btn btn-primary" onclick="openPopup()">
+      <!-- Upload button (NO onclick) -->
+      <button type="button" class="btn btn-primary" id="uploadBtn">
         <i class="ri-upload-2-line"></i>
         <span>Upload File</span>
       </button>
@@ -65,8 +65,8 @@
   <!-- UPLOAD POPUP -->
   <div id="popup" class="backdrop hidden">
     <div class="popup">
-      <!-- close button -->
-      <button type="button" class="close-btn" onclick="closePopup()">
+      <!-- close button (NO onclick) -->
+      <button type="button" class="close-btn" id="closePopupBtn">
         <i class="ri-close-line"></i>
       </button>
 
@@ -90,30 +90,7 @@
     </div>
   </div>
 
-  <!-- SUPER SIMPLE JS -->
-  <script>
-    function openPopup() {
-      var popup = document.getElementById("popup");
-      if (popup) {
-        popup.classList.remove("hidden");
-      }
-    }
-
-    function closePopup() {
-      var popup = document.getElementById("popup");
-      if (popup) {
-        popup.classList.add("hidden");
-      }
-    }
-
-    // backdrop pe click kare to bhi band ho
-    window.addEventListener("click", function (e) {
-      var popup = document.getElementById("popup");
-      if (popup && e.target === popup) {
-        closePopup();
-      }
-    });
-  </script>
+  <!-- External JS file (CSP friendly) -->
+  <script src="/js/homepage.js" defer></script>
 </body>
 </html>
-

@@ -20,7 +20,22 @@ app.use(express.static('public')); // serve CSS, JS, fonts, images
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      useDefaults: true,
+      directives: {
+        "default-src": ["'self'"],
+        "script-src": ["'self'"], 
+        "style-src": ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"], 
+        "font-src": ["'self'", "https://cdn.jsdelivr.net"],
+        "img-src": ["'self'", "data:"],
+      },
+    },
+    crossOriginEmbedderPolicy: false,
+  })
+);
+
 app.use(cors());
 const path = require('path');
 // View engine
