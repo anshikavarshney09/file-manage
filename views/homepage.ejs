@@ -52,9 +52,15 @@
                 <i class="ri-file-2-line file-icon"></i>
                 <span class="file-name"><%= file.originalName %></span>
               </div>
-              <a href="/download/<%= file._id %>" target="_blank" class="icon-btn">
-                <i class="ri-download-2-line"></i>
-              </a>
+              <a
+  href="<%= file.url %>"
+  target="_blank"
+  download="<%= file.originalName %>"
+  class="icon-btn"
+>
+  <i class="ri-download-2-line"></i>
+</a>
+
             </div>
           <% }) %>
         </div>
