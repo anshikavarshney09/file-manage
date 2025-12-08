@@ -19,9 +19,11 @@ Cloud Storage: Cloudinary
 Other: Multer, Helmet, Dotenv, Render
 
 📸 Screenshots:
-<img width="960" height="510" alt="image" src="https://github.com/user-attachments/assets/e3187a64-ab08-4a6d-8590-170a38474267" />
-<img width="960" height="513" alt="image" src="https://github.com/user-attachments/assets/3156c3c0-7a86-4d95-8096-42d3818d6a7d" />
-<img width="960" height="511" alt="image" src="https://github.com/user-attachments/assets/ff2d9660-432c-4084-a753-e141f6715f72" />
+1. Homepage: <img width="951" height="508" alt="image" src="https://github.com/user-attachments/assets/12cb6929-f4cc-44d4-8d39-19a32bc873cc" />
+2. Upload Popup : <img width="960" height="512" alt="image" src="https://github.com/user-attachments/assets/344f87d0-6d89-4ed2-81ca-189ae6dbe39b" />
+3. 3. Cloudinary Media Library: <img width="960" height="511" alt="image" src="https://github.com/user-attachments/assets/c9ffc141-db45-4254-958d-ae7ea9cd87d9" />
+
+
 
 
 🌐 Deployment
